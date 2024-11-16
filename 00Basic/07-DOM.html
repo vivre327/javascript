@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM</title>
     <link rel="stylesheet" href="07-DOM.css" />
+    <script defer src="07-DOM.js"></script>
   </head>
 
   <body>
@@ -20,7 +21,7 @@
     <main class="main">
       <img src="./images/logo.png" class="logo" alt="" />
       <h2 class="heading">선택자</h2>
-      <ul class="selector">
+      <ul class="selector yourname-list">
         <li class="item1">
           <a href="">
             <img src="./images/selector1.gif" alt="" />
@@ -69,9 +70,9 @@
       <nav class="tabs">
         <ul>
           <li><button class="active">All Topic</button></li>
-          <li><button>Popular</button></li>
-          <li><button>Newest</button></li>
-          <li><button>Advance</button></li>
+          <li><button class="active">Popular</button></li>
+          <li><button class="active">Newest</button></li>
+          <li><button class="active">Advance</button></li>
         </ul>
       </nav>
       <h2 class="heading">텍스트 제어</h2>
@@ -255,18 +256,26 @@
       <h2 class="heading">속성 제어</h2>
       <button class="close" aria-label="닫기">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+          <path
+            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+          />
         </svg>
       </button>
       <div class="attribute">
         <h3>Rating</h3>
         <div class="ratings">
-          <div><input type="radio" name="rate" id="rate1" value="5" /><label for="rate1">5 ⭐</label> <input type="radio" name="rate" id="rate2" value="4" /><label for="rate2">4 ⭐</label> <input type="radio" name="rate" id="rate3" value="3" /><label for="rate3">3 ⭐</label> <input type="radio" name="rate" id="rate4" value="2" /><label for="rate4">2 ⭐</label></div>
+          <div>
+            <input type="radio" name="rate" id="rate1" value="5점" /><label for="rate1">5 ⭐</label>
+            <input type="radio" name="rate" id="rate2" value="4" /><label for="rate2">4 ⭐</label>
+            <input type="radio" name="rate" id="rate3" value="3" /><label for="rate3">3 ⭐</label>
+            <input type="radio" name="rate" id="rate4" value="2" /><label for="rate4">2 ⭐</label>
+          </div>
           <div>
             <button class="btn-disabled">모두 비활성</button>
-            <button>선택한 점수 확인</button>
+            <button class="btn-score">선택한 점수 확인</button>
           </div>
         </div>
+
         <h3>Name</h3>
         <div class="name">
           <input type="text" value="리베하얀" readonly />
@@ -282,12 +291,13 @@
         </div>
         <h3 class="colspan">Avatar</h3>
         <div class="colspan">
-          <button>프로필 사진변경</button>
+          <button class="btn-avatar">프로필 사진변경</button>
           <button class="btn-alt">대체텍스트</button>
         </div>
         <h3 class="colspan">Add File</h3>
         <div class="colspan">
           <input type="file" name="" id="" class="file" />
+          <div class="file-info"></div>
         </div>
       </div>
     </dialog>

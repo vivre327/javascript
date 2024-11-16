@@ -2,7 +2,7 @@
 const nameValue = "CodingPing";
 const levelValue = "LEVEL UP";
 const staminaValue = 12555;
-const attackValue = 88766;
+let attackValue = 1000;
 const shieldValue = 28745;
 
 const staminaIcon = "🦾";
