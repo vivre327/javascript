@@ -43,15 +43,15 @@ const updateGeneralPostCount = () => {
 
   // 게시물 유형 확인
   postData.forEach((post, idx) => {
-    console.log(`${idx}번째 게시물 타입 체크중`);
+    // console.log(`${idx}번째 게시물 타입 체크중`);
     if (post.type === "general") {
-      console.log(`${idx}번 게시물은 일반 게시물 입니다!`);
+      // console.log(`${idx}번 게시물은 일반 게시물 입니다!`);
       generalCount++;
-      console.log(`일반 게시물은 총 ${generalCount}개 입니다`);
+      // console.log(`일반 게시물은 총 ${generalCount}개 입니다`);
     } else {
-      console.log(`${idx}번 게시물은 공지사항입니다!`);
+      // console.log(`${idx}번 게시물은 공지사항입니다!`);
       noticeCount++;
-      console.log(`공지사항 게시물은 총 ${noticeCount}개 입니다`);
+      // console.log(`공지사항 게시물은 총 ${noticeCount}개 입니다`);
     }
   });
 
