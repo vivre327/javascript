@@ -26,6 +26,58 @@ const onChangeOption = () => {
 
 onChangeOption();
 
+/** 추천인 아이디 확인 */
+const checkRecUser = () => {
+  const msgEl = document.querySelector("#message");
+  const inputEl = document.querySelector("#txt7_2_1");
+  const submitBtn = inputEl.nextElementSibling;
+
+  submitBtn.addEventListener("click", () => {
+    if (!inputEl.value) {
+      msgEl.textContent = "추천인 아이디를 입력해 주세요.";
+      msgEl.style.color = "red";
+      inputEl.focus();
+      inputEl.addEventListener("input", () => {
+        msgEl.textContent = "";
+      });
+    } else {
+      if (!confirm(`추천인 아이디: ${inputEl.value}`)) {
+        alert("취소 되었습니다.");
+        inputEl.value = "";
+        inputEl.focus();
+      }
+    }
+  });
+};
+
+checkRecUser();
+
+// const checkPwd = () => {
+//   const p1 = document.getElementById("txt7_2");
+//   const p2 = document.getElementById("txt7_3");
+//   //null 은 falsy값
+//   let warningSpan = null;
+
+//   p2.addEventListener("input", () => {
+//     if (!warningSpan) {
+//       warningSpan = document.createElement("p");
+//       p2.insertAdjacentElement("afterend", warningSpan);
+//     }
+//     if (p1.value !== p2.value) {
+//       warningSpan.textContent = "패스워드가 일치하지 않습니다.";
+//       warningSpan.style.color = "red";
+//     } else {
+//       warningSpan.textContent = "패스워드가 일치합니다.";
+//       warningSpan.style.color = "green";
+//     }
+//   });
+// };
+
+// checkPwd();
+
+// falsy : 0, -0, null, "", undefined, NaN
+// Truthy : falsy를 제외한 모든 값들
+
 // 표준 상태 관련 속성들
 // element.disabled = true/false
 // element.readonly = true/false
