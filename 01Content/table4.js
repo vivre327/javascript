@@ -19,12 +19,23 @@ dialog();
 const dataDialog = () => {
   const openButton = document.querySelectorAll("[data-dialog-open]");
   const closeButton = document.querySelectorAll("[data-dialog-close]");
-  const dialog = document.querySelectorAll("[data-dialog]");
-  openButton.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      const modalName = e.target.getAttribute("data-dialog-open");
-      console.log(modalName);
-      // 선택된 모달 이름의 dialog찾아서 show() 실행시키기
+
+  // 팝업 열기
+  openButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      const dialogId = button.getAttribute("data-dialog-open");
+      // console.log(dialogId);
+      const dialog = document.querySelector(`[data-dialog="${dialogId}"]`);
+      dialog.showModal();
+    });
+  });
+
+  // 팝업 닫기
+  closeButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      const dialogId = button.getAttribute("data-dialog-close");
+      const dialog = document.querySelector(`[data-dialog="${dialogId}"]`);
+      dialog.close();
     });
   });
 };
