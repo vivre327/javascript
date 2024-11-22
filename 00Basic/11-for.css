@@ -38,22 +38,22 @@ a {
     }
     &.ico1 {
       &::before {
-        background: url(./images/ico1.svg) no-repeat center / 30% auto hsl(var(--color), 100%, 85%);
+        background: url(./images/ico1.svg) no-repeat center / 30% auto hsl(var(--color, 50), 100%, 85%);
       }
     }
     &.ico2 {
       &::before {
-        background: url(./images/ico2.svg) no-repeat center / 30% auto hsl(var(--color), 100%, 85%);
+        background: url(./images/ico2.svg) no-repeat center / 30% auto hsl(var(--color, 50), 100%, 85%);
       }
     }
     &.ico3 {
       &::before {
-        background: url(./images/ico3.svg) no-repeat center / 30% auto hsl(var(--color), 100%, 85%);
+        background: url(./images/ico3.svg) no-repeat center / 30% auto hsl(var(--color, 50), 100%, 85%);
       }
     }
     &.ico4 {
       &::before {
-        background: url(./images/ico4.svg) no-repeat center / 30% auto hsl(var(--color), 100%, 85%);
+        background: url(./images/ico4.svg) no-repeat center / 30% auto hsl(var(--color, 50), 100%, 85%);
       }
     }
   }
