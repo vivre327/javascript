@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>폼10</title>
     <link rel="stylesheet" href="./css/reset.css" />
-    <script defer src="./form10.js"></script>
+    <script defer src="./js/form10.js"></script>
   </head>
 
   <body>
@@ -26,9 +26,19 @@
                 <th>분류선택</th>
                 <td>
                   <div class="radio-group">
-                    <input type="radio" name="rag1" id="ra2_1" /><label for="ra2_1">블로그 운영팁</label>
-                    <input type="radio" name="rag1" id="ra2_2" /><label for="ra2_2">블로그 소개</label>
-                    <input type="radio" name="rag1" id="ra2_3" /><label for="ra2_3">스킨</label> <input type="radio" name="rag1" id="ra2_4" /><label
+                    <input type="radio" name="rag1" id="ra2_1" /><label
+                      for="ra2_1"
+                      >블로그 운영팁</label
+                    >
+                    <input type="radio" name="rag1" id="ra2_2" /><label
+                      for="ra2_2"
+                      >블로그 소개</label
+                    >
+                    <input type="radio" name="rag1" id="ra2_3" /><label
+                      for="ra2_3"
+                      >스킨</label
+                    >
+                    <input type="radio" name="rag1" id="ra2_4" /><label
                       for="ra2_4"
                       >기타</label
                     >
@@ -38,14 +48,25 @@
               <tr>
                 <th><label for="txt2_1">제목</label></th>
                 <td>
-                  <input type="text" id="txt2_1" class="input-text" placeholder="제목을 입력하세요" maxlength="30" />
+                  <input
+                    type="text"
+                    id="txt2_1"
+                    class="input-text"
+                    placeholder="제목을 입력하세요"
+                    maxlength="30"
+                  />
                   <span class="title-count">0/30</span>
                 </td>
               </tr>
               <tr>
                 <th><label for="txt2_2">내용</label></th>
                 <td>
-                  <textarea id="txt2_2" class="input-text" placeholder="내용을 입력하세요" maxlength="1000"></textarea>
+                  <textarea
+                    id="txt2_2"
+                    class="input-text"
+                    placeholder="내용을 입력하세요"
+                    maxlength="1000"
+                  ></textarea>
                   <span class="content-count">0/1000</span>
                 </td>
               </tr>
