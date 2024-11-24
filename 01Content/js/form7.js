@@ -1,11 +1,16 @@
+// 셀렉트의 초기값을 인풋에 적용시키는 함수
+const defaultOption = (options, input) => {
+  const defaultOptionEl = options.querySelector("option[selected]").value;
+  input.value = defaultOptionEl;
+};
+
 /** 이메일 도메인 선택에 따라 입력 필드 값 설정 */
 const onChangeOption = () => {
-  const inputEl = document.querySelector(".domain");
-  const optionEl = document.querySelector(".email select");
-  const defaultOption = document.querySelector(
-    ".email select option[selected]"
-  ).value;
-  inputEl.value = defaultOption;
+  const email = document.querySelector(".email");
+  const inputEl = email.querySelector(".domain");
+  const optionEl = email.querySelector("select");
+
+  defaultOption(optionEl, inputEl); //초기값 지정
 
   // change 이벤트
   optionEl.addEventListener("change", (e) => {
@@ -24,33 +29,59 @@ const onChangeOption = () => {
   });
 };
 
-onChangeOption();
+// 경우의 수
+// 1. 인풋이 비어있음 fail -> 경고메시지 출력 후 input 포커스();
+// 2. 인풋이 올바르게 작성됨success -> 컨펌창 출력
+// 3. 컨펌창에서 사용자가 [확인] -> 최종success로 input창 입력값 유지
+// 4. 컨펌창에서 사용자가 [취소] -> input의 값을 비우고 포커스();
 
-/** 추천인 아이디 확인 */
+/** 추천인 아이디 확인하는 로직 */
 const checkRecUser = () => {
   const msgEl = document.querySelector("#message");
   const inputEl = document.querySelector("#txt7_2_1");
-  const submitBtn = inputEl.nextElementSibling;
+  const submitBtn = document.querySelector("#inviteBtn");
 
+  // 에러메시지 삭제 함수
+  const clearErrorMsg = () => {
+    inputEl.addEventListener("input", () => {
+      msgEl.textContent = "";
+    });
+  };
+
+  // 에러메시지 출력 함수
+  const showErrMsg = () => {
+    msgEl.textContent = "추천인 아이디를 입력해 주세요.";
+    msgEl.style.color = "red";
+    inputEl.focus();
+  };
+
+  // 추천인 아이디 컨펌 함수
+  const onIdConfirm = () => {
+    // 추천인 입력 input값 비우는 함수
+    const cancelId = () => {
+      alert("취소 되었습니다.");
+      inputEl.value = "";
+      inputEl.focus();
+    };
+
+    if (!confirm(`추천인 아이디: ${inputEl.value}`)) {
+      cancelId(); // 추천인 아이디 입력 취소
+    }
+  };
+
+  // 추천인 아이디 확인 버튼 클릭 시 로직
   submitBtn.addEventListener("click", () => {
     if (!inputEl.value) {
-      msgEl.textContent = "추천인 아이디를 입력해 주세요.";
-      msgEl.style.color = "red";
-      inputEl.focus();
-      inputEl.addEventListener("input", () => {
-        msgEl.textContent = "";
-      });
+      showErrMsg(); // 에러메시지 출력
+      clearErrorMsg(); // input입력시작하면 에러메시지 삭제
     } else {
-      if (!confirm(`추천인 아이디: ${inputEl.value}`)) {
-        alert("취소 되었습니다.");
-        inputEl.value = "";
-        inputEl.focus();
-      }
+      onIdConfirm(); //추천인 아이디 확인 컨펌창 출력
     }
   });
 };
 
-checkRecUser();
+onChangeOption(); // 이메일 도메인 선택에 따라 입력 필드 값 설정
+checkRecUser(); // 추천인 아이디 확인
 
 // const checkPwd = () => {
 //   const p1 = document.getElementById("txt7_2");
