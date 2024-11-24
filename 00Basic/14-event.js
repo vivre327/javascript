@@ -3,24 +3,57 @@
 /* -------------------------------------------------------------------------- */
 const remove = document.querySelector(".btn-remove");
 
-remove.addEventListener("click", () => {
+// 1.외부에서 이벤트 정의
+const removeFn = () => {
   console.log("이벤트가 실행되었습니다.");
+};
+
+remove.addEventListener("click", removeFn);
+
+// 2.remove 함수는 외부에서 작성된 함수를 실행시켜야 작동된다.
+remove.removeEventListener("click", removeFn);
+
+const download = document.querySelector(".download");
+
+const handleDownload = () => {
+  console.log("다운로드 중입니다...");
+};
+download.addEventListener("click", handleDownload);
+
+// .body는 html의 body태그를 의미
+// contextmenu 이벤트는 마우스 오른쪽 클릭을 감지
+document.body.addEventListener("contextmenu", () => {
+  download.removeEventListener("click", handleDownload);
+  console.log("다운로드 이벤트가 제거되었습니다.");
+
+  download.disabled = true;
 });
+// 결과: 사용자가 마우스 오른쪽 클릭을 하면 다운로드 이벤트가 제거된다.
+// ***중요*** 이벤트지우는 방식은 함수를 따로 빼서 작성하고 사용해야 한다.
+// removeEventListener의 사용방식에 대해 기억해두자.
 
 /* -------------------------------------------------------------------------- */
 /*                                  캡처링과 버블링                            */
 /* -------------------------------------------------------------------------- */
-
 // 캡처링
 const captureParent = document.querySelector(".capture");
 const captureChildren = captureParent.querySelector(".children");
+// selector.addEventListener(이벤트,함수,캡처링)
 
-captureParent.addEventListener("click", () => {
-  console.log("parent");
-});
-captureChildren.addEventListener("click", () => {
-  console.log("children");
-});
+const children = () => {
+  console.log("자식");
+};
+
+captureParent.addEventListener(
+  "click",
+  () => {
+    console.log("parent");
+    captureChildren.removeEventListener("click", children);
+  },
+  true
+);
+
+captureChildren.addEventListener("mouseenter", children);
 
 // 버블링
 const bubbleParent = document.querySelector(".bubble");
@@ -29,7 +62,9 @@ const bubbleChildren = bubbleParent.querySelector(".children");
 bubbleParent.addEventListener("click", () => {
   console.log("parent");
 });
-bubbleChildren.addEventListener("click", () => {
+bubbleChildren.addEventListener("click", (e) => {
+  e.stopPropagation();
+
   console.log("children");
 });
 
@@ -70,6 +105,7 @@ form.addEventListener("submit", (e) => {
 
 // 문서/윈도우
 window.addEventListener("popstate", () => logMessage("페이지 바뀜"));
+// URL기준 상태변화
 window.addEventListener("load", () => logMessage("페이지 로드"));
 window.addEventListener("scroll", () => logMessage("스크롤"));
 window.addEventListener("resize", () => logMessage("창크기 변화"));
@@ -80,7 +116,12 @@ window.addEventListener("resize", () => logMessage("창크기 변화"));
 const key = document.querySelector(".key");
 
 key.addEventListener("keydown", (event) => {
-  // console.log(event); // 이벤트 키확인;
+  // console.log(event.code); // 이벤트 키확인;
+  if (event.ctrlKey && event.key === "a") {
+    console.log("단축키 실행");
+  }
+  // 1. 일반키 비교 : event.key === "a"
+  // 2. 특수키 비교 : event.ctrlKey
 });
 
 /* -------------------------------------------------------------------------- */
@@ -88,6 +129,10 @@ key.addEventListener("keydown", (event) => {
 /* -------------------------------------------------------------------------- */
 const ani = document.querySelector(".ani");
 
-ani.addEventListener("animationend", () => {
-  //   console.log("애니메이션이 종료되었습니다.");
+ani.addEventListener("animationend", (event) => {
+  // console.log("애니메이션이 종료되었습니다.");
+  // event.target.style.setProperty("--bg", "orange"); // 배경색 변경
+  event.target.style.setProperty("--ani", "size");
 });
+
+// 애니메이션 종료 후 이어서 또 다른 애니메이션 실행할때 사용

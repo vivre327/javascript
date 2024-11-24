@@ -324,7 +324,7 @@ const item4 = document.querySelector(".css .item4");
 
 // getComputedStyle는 CSS스타일을 가져온다.(객체로 반환)
 const isStyle = getComputedStyle(item4).border;
-console.log(isStyle);
+// console.log(isStyle);
 /* -------------------------------------------------------------------------- */
 /*                                   DOM 탐색                                  */
 /* -------------------------------------------------------------------------- */
@@ -355,14 +355,65 @@ const toggleDays = () => {
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       // e.target과 e.currentTarget의 차이점을 이해하자.
+      // e.target은 이벤트가 발생한 요소를 반환한다.
       const parent = e.currentTarget.parentElement;
-      console.log(parent);
+      const children = e.currentTarget.children;
+      console.log(children);
+
+      children[1].style.color = "yellow";
+
       parent.classList.toggle("active");
+
+      if (children[1].hasAttribute("style")) {
+        children[1].removeAttribute("style");
+      } else {
+        children[1].style.color = "yellow";
+      }
     });
   });
 };
 
 toggleDays();
+
+const toggleDepth = () => {
+  const buttons = document.querySelectorAll(".routine-list button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      // console.log(e.currentTarget);
+      const depthButton = e.currentTarget;
+      if (depthButton.closest("div")) {
+        depthButton.closest("li").style.border = "2px dashed red";
+      }
+    });
+  });
+};
+
+toggleDepth();
+
+/** 자손탐색 */
+const checkDepth = () => {
+  const items = document.querySelectorAll(".routine-list > li");
+
+  items.forEach((item) => {
+    const depth = item.querySelector(".detail-list");
+    // console.log(item.contains(depth));
+
+    if (!item.contains(depth)) {
+      const button = item.querySelector("button");
+
+      // role은 역할만 링크로 바꾼다. dom을 바꾸면 자식요소가 없어지기 때문에 role을 추가한다.
+      // 대신 이동하는건 스크립트로 처리한다.
+      button.setAttribute("role", "link");
+      button.addEventListener("click", () => {
+        window.location.href = "#page";
+      });
+    }
+  });
+
+  // contains는 부모요소가 자식요소children를 포함하고 있는지 확인한다.
+  // 결과값은 true, false로 반환한다.
+};
+checkDepth();
 
 /* -------------------------------------------------------------------------- */
 /*                                   DOM 삽입                                  */
@@ -372,3 +423,55 @@ toggleDays();
 // DOM은 Html 태그 뿐만 아니라 텍스트도 제어할 수 있다.
 // Node는 공백 주석을 포함한 모든 HTML 요소를 의미한다.
 // DOM은 Node 객체로 구성되어 있다.
+
+const insertDOM = () => {
+  const ul = document.querySelector(".routine-list");
+
+  // ul.insertAdjacentHTML(위치, html코드);
+  // 위치는 beforebegin, afterbegin, beforeend, afterend가 있다.
+  ul.insertAdjacentHTML(
+    "beforebegin",
+    `<h3>오늘의 할일
+      <span>2021.09.01</span>
+    </h3>`
+  );
+
+  ul.insertAdjacentHTML("afterend", `<h3>오늘의 할일을 모두 완료했습니다.</h3>`);
+
+  // prepend는 첫번째로 추가되는 아이템: 하지만 텍스트만 추가할 수 있다.
+  // createElement는 메모리에만 존재하고 내가 원할때 꺼내서 사용할 수 있다.(DOM생성역할)
+
+  const li = document.createElement("li");
+  li.textContent = "첫번째 자식입니다.";
+  li.classList.add("first");
+
+  ul.prepend(li);
+
+  const liLast = document.createElement("li");
+  liLast.textContent = "마지막 자식입니다.";
+  li.classList.add("last");
+
+  ul.append(liLast);
+  // createElement는 한 번 만들면 한 번만 사용할 수 있다.
+
+  /** 요소 지우기 */
+  // ul.remove();
+
+  // ul.innerHTML = "";
+  // ul.innerHTML = `<li>오늘의 할일</li>`;
+  // ul.innerHTML = `
+  //   <li>오늘의 할일</li>
+  //   <li>오늘의 할일</li>
+  //   <li>오늘의 할일</li>
+  //   <li>오늘의 할일</li>
+  // `;
+  // innerHTML은 기존의 요소를 지우고 새로운 요소를 추가한다.
+  // 처음부터 부모html만 작성하고, 스크립트로 자식을 새롭게 그리는 개발에 사용한다.(React, Vue)
+
+  // ul.innerText = "";
+  // ul.innerText = "오늘의 할일";
+  // TextContent와 같음..
+  // 다른점은 textContent는 값을 가져오거나 설정할 수 있다.
+};
+
+insertDOM();
