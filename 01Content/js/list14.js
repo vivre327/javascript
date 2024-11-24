@@ -4,6 +4,13 @@ const changeTitle = () => {
   const titleText = document.querySelector(".message h2");
   const titleImgSrc = document.querySelector(".message img");
 
+  // 선택된 아이템을 타이틀에 출력하는 함수
+  const thisItem = (name, imgSrc) => {
+    titleText.textContent = name;
+    titleImgSrc.setAttribute("src", imgSrc);
+  };
+
+  // 리스트 아이템 제어
   productItems.forEach((item) => {
     let name = item.textContent;
     let imgSrc = item.querySelector("img").getAttribute("src");
@@ -11,8 +18,7 @@ const changeTitle = () => {
     // console.log(imgSrc);
 
     item.addEventListener("click", () => {
-      titleText.textContent = name;
-      titleImgSrc.setAttribute("src", imgSrc);
+      thisItem(name, imgSrc); //타이틀 영역 업데이트
     });
   });
 };
