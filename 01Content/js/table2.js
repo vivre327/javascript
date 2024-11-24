@@ -23,7 +23,7 @@ const postData = [
 /** 게시판 데이터 표출 */
 const postList = document.querySelector(".board tbody");
 
-postList.innerHTML = postData // testData가 아닌 postData를 사용
+postList.innerHTML = postData
   .map(
     (item) => `
     <tr>
@@ -35,14 +35,12 @@ postList.innerHTML = postData // testData가 아닌 postData를 사용
   )
   .join("");
 
-/** 게시물 수 집계 */
-const updateGeneralPostCount = () => {
-  const countView = document.querySelector(".total-count");
+// 게시물 유형 확인하고 집계하는 함수
+const countPostsByType = (dataName) => {
+  let data = {};
   let generalCount = 0;
   let noticeCount = 0;
-
-  // 게시물 유형 확인
-  postData.forEach((post, idx) => {
+  dataName.forEach((post, idx) => {
     // console.log(`${idx}번째 게시물 타입 체크중`);
     if (post.type === "general") {
       // console.log(`${idx}번 게시물은 일반 게시물 입니다!`);
@@ -54,10 +52,29 @@ const updateGeneralPostCount = () => {
       // console.log(`공지사항 게시물은 총 ${noticeCount}개 입니다`);
     }
   });
-
-  // 집계한 갯수 표시
-  countView.textContent = `일반 게시물: 총 ${generalCount}개 / 중요공지: 총 ${noticeCount}개`;
-  // countView.textContent = `게시물 총 ${generalCount}개`;
+  // 리턴값: 빈객체data를 만들고 속성count1,count2 추가하여 계산된 값을 담는다
+  data.count1 = generalCount;
+  data.count2 = noticeCount;
+  return data;
 };
 
-updateGeneralPostCount();
+// 화면에 표시하는 함수
+const renderPostCount = (viewEl, countTypeA, countTypeB) => {
+  viewEl.textContent = `일반 게시물: 총 ${countTypeA}개 / 중요공지: 총 ${countTypeB}개`;
+};
+
+// 실행 함수
+const updatePostCount = () => {
+  const countView = document.querySelector(".total-count");
+
+  // result에 리턴값 객체를 받는다
+  const result = countPostsByType(postData);
+  // 객체안의 각 속성을 변수로 꺼낸다
+  const generalResult = result.count1;
+  const noticeResult = result.count2;
+
+  // 화면에 표시하는 함수에 인자로 전달한다
+  renderPostCount(countView, generalResult, noticeResult);
+};
+
+updatePostCount();
