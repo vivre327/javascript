@@ -1,7 +1,8 @@
 /** 선택된 체크박스 집계 기능 */
 const resetForm = () => {
   const chkBoxItems = document.querySelectorAll(".option-form input");
-  const countView = document.querySelector(".selected");
+  const countView = document.querySelector(".count");
+  const tagView = document.querySelector(".selected");
   const resetBtn = document.querySelector(".btn-reset");
   let chkCount = 0;
 
@@ -26,10 +27,32 @@ const resetForm = () => {
 
   chkBoxItems.forEach((item) => {
     // 각 체크박스의 변경 감지
-    item.addEventListener("change", () => {
+    item.addEventListener("change", (e) => {
+      // 카운트 표시
       updateCount();
+      // 선택된 체크박스를 해시태그로 표시
+
+      const thisChkId = e.target.getAttribute("id");
+      const addedItem = tagView.querySelector(`[data-id="${thisChkId}"]`);
+      const thisLabel = document.querySelector(`[for="${thisChkId}"]`).textContent;
+      const hasId = tagView.querySelectorAll(`[data-id="${thisChkId}"]`);
+      if (item.checked) {
+        // console.log("체크함!");
+        // console.log(hasId);
+        if (hasId.length == 0) {
+          const span = document.createElement("span");
+          span.textContent = thisLabel;
+          span.setAttribute("data-id", thisChkId);
+          tagView.append(span);
+        }
+      } else {
+        // console.log("체크해제함");
+        // console.log(addedItem);
+        addedItem.remove();
+      }
     });
   });
+
   // 초기화 실행
   resetBtn.addEventListener("click", () => {
     chkBoxItems.forEach((item) => {
