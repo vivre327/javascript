@@ -1,0 +1,30 @@
+.select {
+  position: relative;
+  display: inline-block;
+  &.active {
+    > button {
+      &::after {
+        rotate: -180deg;
+      }
+    }
+    > ul {
+      display: block;
+    }
+  }
+  > button {
+    display: flex;
+    align-items: center;
+    &::after {
+      content: "⬇";
+      transition: 0.2s;
+    }
+  }
+  > ul {
+    display: none;
+    position: absolute;
+    inset: auto 0;
+    button {
+      width: 100%;
+    }
+  }
+}
