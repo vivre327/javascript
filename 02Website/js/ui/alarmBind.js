@@ -1,22 +1,19 @@
-import { el, els } from "../helper.js";
-
-// 1. element 유효성 검사 (부모요소 찾고 부모요소 없으면 return;으로 바인딩함수를 종료)
-// 2. 변수생성 <= arry 에 대해 map 메소드 실행하여 재가공 (forEach처럼 data.js내의 객체를 순회시킴 + 구조분해할당)
-// 3. return으로 새로운 배열 만들어 내보내기 (return `` 템플릿리터럴방식으로 html구조화하여 내보내기)
-// 4. 부모요소를 찾아 innerHTML로 2번의 변수(return값)를 넣어준다.
+import { el } from "../helper.js";
 
 export const alarmBind = (arry) => {
+  // 유효성검사
   const element = document.querySelector("#alram");
   if (!element) {
     return;
   }
+
+  // alarmData 재가공을 위한 map 메서드 실행
   const alarmItems = arry.map((item) => {
-    // console.log(item);
     // 구조분해할당
     const { date, writer, content } = item;
     return /* html */ `
         <li>
-          <div class="alram__date">${item?.date || "-"}</div>
+          <div class="alram__date">${date}</div>
           <div class="alram__writer">${writer}</div>
           <button class="alram__del">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -34,21 +31,8 @@ export const alarmBind = (arry) => {
   });
 
   // console.log(alarmItems);
-  el("#alram").innerHTML = alarmItems;
+  el("#alram").innerHTML = alarmItems; //화면에 그려짐
+  el(".profile__alram").textContent = arry.length; //뱃지에 알람갯수 초기랜더링
 
-  // 삭제 기능
-  const handleDelete = () => {
-    // 삭제 기능 작성. e.target
-    els(".alram__del").forEach((button) => {
-      button.addEventListener("click", (e) => {
-        const parentList = e.target.closest("li");
-        parentList.remove();
-        console.log("hello!");
-      });
-    });
-
-    // 삭제한 알람 unshift로 profile__alram반영하는 기능 추가
-  };
-
-  handleDelete();
+  // 화면 랜더링 끝.
 };

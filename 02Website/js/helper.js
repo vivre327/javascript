@@ -1,4 +1,4 @@
-/* A el 사용 */
+/* A: el 사용 */
 export const el = (selector) => {
   // **selector에 대한 유효성 검사 (선언된 변수가 없거나, 문자열이 아닌 경우)
 
