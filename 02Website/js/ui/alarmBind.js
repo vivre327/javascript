@@ -1,4 +1,4 @@
-import { el } from "../helper.js";
+import { el, els } from "../helper.js";
 
 // 1. element 유효성 검사 (부모요소 찾고 부모요소 없으면 return;으로 바인딩함수를 종료)
 // 2. 변수생성 <= arry 에 대해 map 메소드 실행하여 재가공 (forEach처럼 data.js내의 객체를 순회시킴 + 구조분해할당)
@@ -39,5 +39,16 @@ export const alarmBind = (arry) => {
   // 삭제 기능
   const handleDelete = () => {
     // 삭제 기능 작성. e.target
+    els(".alram__del").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const parentList = e.target.closest("li");
+        parentList.remove();
+        console.log("hello!");
+      });
+    });
+
+    // 삭제한 알람 unshift로 profile__alram반영하는 기능 추가
   };
+
+  handleDelete();
 };
