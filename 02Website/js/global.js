@@ -4,16 +4,17 @@ import { alarmBind } from "./ui/alarmBind.js";
 import { alarmData } from "./data/alarmData.js";
 // import { mapTest } from "./ui/mapTest.js";
 import { handleAlarm } from "./ui/handleAlarm.js";
+import { fileInfo } from "./ui/fileInfo.js";
 
 // include
 // 그려진 뒤에 조작해야하므로 가장 상단에 위치
 includeHTML("/02Website/include/header.html", ".header");
 includeHTML("/02Website/include/footer.html", ".footer").then(() => {
+  //Promise 체이닝(.then())을 사용하여 컴포넌트 로드 완료 후의 콜백 처리
   // footerYear
   footerYear();
   // alarm
   alarmBind(alarmData);
   handleAlarm(alarmData);
-  // mapTest();
-  // filterTest();
+  fileInfo();
 });

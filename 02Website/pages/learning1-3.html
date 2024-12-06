@@ -215,12 +215,23 @@
                 <div class="btn-group-type1">
                   <button class="btn white base">학습자 선택</button>
                   <button class="btn white base">학습자 업로드</button>
-                  <button class="btn white base ico2">파일 업로드</button>
+                  <label class="btn white base ico2" for="fileInput">
+                    파일 업로드
+                    <input
+                      type="file"
+                      id="fileInput"
+                      style="overflow: visible"
+                    />
+                  </label>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
+        <dl class="file-meta" style="display: flex">
+          <dt class="file-name"></dt>
+          <dd class="file-size"></dd>
+        </dl>
         <div class="align center mt30">
           <button class="btn white base rounded">제출</button>
         </div>

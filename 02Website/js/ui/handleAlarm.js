@@ -25,7 +25,7 @@ export const handleAlarm = (arry) => {
       // console.log(`업데이트된 알람갯수는? ${updateLength}개입니다`);
       badge.textContent = updateLength;
 
-      // 3. 필터링된 배열을 1의 원래배열에 다시 담기 -> 1부터 반복
+      // 3. 필터링된 배열newArry을 원래배열에 다시 담기 -> 1부터 반복
       arry = newArry;
     });
   });
