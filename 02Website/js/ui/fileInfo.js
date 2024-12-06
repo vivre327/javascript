@@ -1,10 +1,16 @@
 import { el } from "../helper.js";
 
 export const fileInfo = () => {
-  const applyFile = el("#fileInput");
+  // 유효성 검사
+  const element = document.querySelector("#fileInput");
+  if (!element) {
+    return; //shop-list가 없으면 함수를 종료s
+  }
+
+  const fileInput = el("#fileInput");
   const fileView = el(".file-meta");
 
-  applyFile.addEventListener("change", (e) => {
+  fileInput.addEventListener("change", (e) => {
     const fileMeta = e.target.files;
     // console.log(typeof fileMeta);
     // console.log(fileMeta);
