@@ -5,6 +5,8 @@ import { alarmData } from "./data/alarmData.js";
 // import { mapTest } from "./ui/mapTest.js";
 import { handleAlarm } from "./ui/handleAlarm.js";
 import { fileInfo } from "./ui/fileInfo.js";
+import { classData } from "./data/classData.js";
+import { classList } from "./ui/classList.js";
 
 // include
 // 그려진 뒤에 조작해야하므로 가장 상단에 위치
@@ -17,4 +19,5 @@ includeHTML("/02Website/include/footer.html", ".footer").then(() => {
   alarmBind(alarmData);
   handleAlarm(alarmData);
   fileInfo();
+  classList(classData);
 });

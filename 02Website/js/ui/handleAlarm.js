@@ -1,6 +1,10 @@
 import { el, els } from "../helper.js";
 
 export const handleAlarm = (arry) => {
+  const element = document.querySelector(".profile__alram");
+  if (!element) {
+    return;
+  }
   const badge = el(".profile__alram");
 
   els(".alram__del").forEach((button) => {
