@@ -1,9 +1,8 @@
 import { el } from "../helper.js";
 
 export const classList = (arry) => {
-  const element = document.querySelector(".list-type1");
-
   // 유효성 검사
+  const element = document.querySelector(".list-type1");
   if (!element) {
     return;
   }

@@ -7,6 +7,8 @@ import { handleAlarm } from "./ui/handleAlarm.js";
 import { fileInfo } from "./ui/fileInfo.js";
 import { classData } from "./data/classData.js";
 import { classList } from "./ui/classList.js";
+import { postData } from "./ui/postData.js";
+import { postList } from "./ui/postList.js";
 
 // include
 // 그려진 뒤에 조작해야하므로 가장 상단에 위치
@@ -20,4 +22,5 @@ includeHTML("/02Website/include/footer.html", ".footer").then(() => {
   handleAlarm(alarmData);
   fileInfo();
   classList(classData);
+  postList(postData);
 });
