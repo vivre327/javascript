@@ -6,9 +6,23 @@
     <title>Responsive</title>
     <script type="module" src="./05-Responsive.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
       .swiper {
         height: 50vh;
+        .swiper-slide {
+          background-color: silver;
+        }
+        @media screen and (width < 1024px) {
+          & > :not(.swiper-wrapper) {
+            display: none;
+          }
+          .swiper-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
       }
     </style>
   </head>
