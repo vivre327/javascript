@@ -10,17 +10,17 @@ export const handleAlarm = (arry) => {
   els(".alram__del").forEach((button) => {
     button.addEventListener("click", (e) => {
       const parentList = e.target.closest("li");
-      const alarmDate = parentList.querySelector(".alram__date").textContent;
-      // const alarmWriter = parentList.querySelector(".alram__writer").textContent;
-      // const alarmContent = parentList.querySelector(".alram__content").textContent;
+      const alarmId = parentList.getAttribute("data-id");
+
+      // console.log(typeof alarmId);
 
       // html에서 알람 삭제
       parentList.remove();
 
       // 1. 배열 filter
       let newArry = arry.filter((item) => {
-        // !== 날짜(?)가 일치하지 않은 나머지 걸러냄
-        return item.date !== alarmDate;
+        // ID가 일치하지 않은 나머지 걸러냄
+        return item.id !== Number(alarmId);
       });
       // console.log(newArry);
 

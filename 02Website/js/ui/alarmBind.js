@@ -10,9 +10,9 @@ export const alarmBind = (arry) => {
   // alarmData 재가공을 위한 map 메서드 실행
   const alarmItems = arry.map((item) => {
     // 구조분해할당
-    const { date, writer, content } = item;
+    const { id, date, writer, content } = item;
     return /* html */ `
-        <li>
+        <li data-id="${id}">
           <div class="alram__date">${date}</div>
           <div class="alram__writer">${writer}</div>
           <button class="alram__del">
@@ -31,7 +31,7 @@ export const alarmBind = (arry) => {
   });
 
   // console.log(alarmItems);
-  el("#alram").innerHTML = alarmItems; //화면에 그려짐
+  el("#alram").innerHTML = alarmItems.join(""); //화면에 그려짐
   el(".profile__alram").textContent = arry.length; //뱃지에 알람갯수 초기랜더링
 
   // 화면 랜더링 끝.
