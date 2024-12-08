@@ -14,8 +14,8 @@ import { headerAnimation } from "./headerAnimation.js";
 
 // include
 // 그려진 뒤에 조작해야하므로 가장 상단에 위치
-includeHTML("/02Website/include/header.html", ".header");
-includeHTML("/02Website/include/footer.html", ".footer").then(() => {
+includeHTML("/javascript/02Website/include/header.html", ".header");
+includeHTML("/javascript/02Website/include/footer.html", ".footer").then(() => {
   //Promise 체이닝(.then())을 사용하여 컴포넌트 로드 완료 후의 콜백 처리
   // footerYear
   footerYear();
