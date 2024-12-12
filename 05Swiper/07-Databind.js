@@ -27,9 +27,6 @@ sliderWrap.innerHTML = data
   })
   .join("");
 
-// console.log(array);
-// sliderWrap.innerHTML = array.join("");
-
 const swiper = new Swiper(".swiper", {
   pagination: {
     el: ".swiper-pagination",

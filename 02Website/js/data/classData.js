@@ -1,7 +1,7 @@
 export const classData = [
   {
     id: 1,
-    thumbnail: "/javascript/02Website/images/@thumbnail.png",
+    thumbnail: "/02Website/images/@thumbnail.png",
     category: "경영",
     coinPrice: 1000000,
     title: "공연문화와 크리에이티브",
@@ -12,7 +12,7 @@ export const classData = [
   },
   {
     id: 2,
-    thumbnail: "/javascript/02Website/images/@thumbnail2.png",
+    thumbnail: "/02Website/images/@thumbnail2.png",
     category: "뉴스",
     coinPrice: 298000,
     title: "디지털 트랜스포메이션의 이해",
@@ -23,7 +23,7 @@ export const classData = [
   },
   {
     id: 3,
-    thumbnail: "/javascript/02Website/images/img_idp2.png",
+    thumbnail: "/02Website/images/img_idp2.png",
     category: "경영",
     coinPrice: 1500,
     title: "전략적 의사결정과 문제해결",
@@ -34,7 +34,7 @@ export const classData = [
   },
   {
     id: 4,
-    thumbnail: "/javascript/02Website/images/img_visual1.png",
+    thumbnail: "/02Website/images/img_visual1.png",
     category: "뉴스",
     coinPrice: 12000,
     title: "미디어 컨텐츠 기획과 제작",
@@ -45,7 +45,7 @@ export const classData = [
   },
   {
     id: 5,
-    thumbnail: "/javascript/02Website/images/img_idp.png",
+    thumbnail: "/02Website/images/img_idp.png",
     category: "경영",
     coinPrice: 200,
     title: "글로벌 비즈니스 전략",
