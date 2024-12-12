@@ -1,6 +1,11 @@
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
 
 export const visualSlider = (data) => {
+  const element = document.querySelector(".swiper");
+  if (!element) {
+    return;
+  }
+
   const sliderWrap = document.querySelector(".swiper-wrapper");
   sliderWrap.innerHTML = data
     .map((item) => {
