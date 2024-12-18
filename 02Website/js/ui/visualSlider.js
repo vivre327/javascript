@@ -1,3 +1,4 @@
+import { el } from "../helper.js";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
 
 export const visualSlider = (data) => {
@@ -6,7 +7,7 @@ export const visualSlider = (data) => {
     return;
   }
 
-  const sliderWrap = document.querySelector(".swiper-wrapper");
+  const sliderWrap = el(".swiper-wrapper");
   sliderWrap.innerHTML = data
     .map((item) => {
       return /* html */ `
@@ -35,7 +36,7 @@ export const visualSlider = (data) => {
   });
 
   // 재생,정지 버튼
-  const toggleSlide = document.querySelector(".btn-play");
+  const toggleSlide = el(".btn-play");
   let isToggle = true;
   toggleSlide.addEventListener("click", () => {
     // visualSwiper라는 변수를 제어한다.

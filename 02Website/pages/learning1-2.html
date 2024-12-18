@@ -13,8 +13,12 @@
     <meta property="og:image" content="페이지 대표이미지" />
     <meta property="og:url" content="페이지 주소" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/style.css" />
+    <script type="module" src="../js/global.js"></script>
   </head>
 
   <body>
@@ -234,8 +238,9 @@
             </div>
             <h4 class="heading sm">주요내용(요약)</h4>
             <p class="text-type2">
-              셀프리더십이란 자기 자신에게 지속적인 영향력을 줄 수 있는 역량을 소비하고 있는 능력을 말합니다. 지속적인 영향력을 위해 꾸준히 동기부여하고, 그 동기부여의 효과가 외부환경에서 채워질
-              것이라는 기대 이외에 자신의 내부 환경 안에서 컨트롤 하여 채워나갈 수 있는 능력을 확립하는 과정입니다.
+              셀프리더십이란 자기 자신에게 지속적인 영향력을 줄 수 있는 역량을 소비하고 있는 능력을 말합니다. 지속적인 영향력을 위해 꾸준히
+              동기부여하고, 그 동기부여의 효과가 외부환경에서 채워질 것이라는 기대 이외에 자신의 내부 환경 안에서 컨트롤 하여 채워나갈 수 있는 능력을
+              확립하는 과정입니다.
             </p>
             <div class="lounge-view__btm">
               <ul class="list-type3">
@@ -254,11 +259,44 @@
         <div class="lounge-details">
           프로그램 상세 정보<br />
           (주차 별 커리큘럼 정보 및 강사 소개 등 정보 확산)
+
+          <nav>
+            <ul class="tab-type1" data-tabs="id">
+              <li><button data-tab>탭1</button></li>
+              <li><button data-tab>탭2</button></li>
+              <li><button data-tab>탭3</button></li>
+              <li><button data-tab>탭4</button></li>
+            </ul>
+          </nav>
+          <div class="tab-contents" data-tab-contents="id">
+            <div data-tab-content>탭1내용</div>
+            <div data-tab-content>탭2내용</div>
+            <div data-tab-content>탭3내용</div>
+            <div data-tab-content>탭4내용</div>
+          </div>
         </div>
-        <div class="comment">
-          <div class="comment__count">7개의 댓글이 있습니다.</div>
+
+        <!-- 재사용가능한 tab의 구조 -->
+        <!-- <nav>
+            <ul class="tab-type1" data-tabs="id">
+              <li data-tab><button>탭1</button></li>
+              <li data-tab><button>탭2</button></li>
+              <li data-tab><button>탭3</button></li>
+              <li data-tab><button>탭4</button></li>
+            </ul>
+          </nav>
+          <div class="tab-contents" data-tab-contents="id">
+            <div data-tab-content>탭1내용</div>
+            <div data-tab-content>탭2내용</div>
+            <div data-tab-content>탭3내용</div>
+            <div data-tab-content>탭4내용</div>
+          </div>
+        </div> -->
+
+        <form class="comment">
+          <div class="comment__count">0개의 댓글이 있습니다.</div>
           <ul class="comment__list">
-            <li>
+            <!-- <li>
               <div class="avatar">
                 <img src="../images/@avatar.png" alt="" />
               </div>
@@ -274,50 +312,14 @@
                   특히 방향성을 찾아야 한다는 말씀은 정말 많이 와닿았습니다.
                 </div>
               </div>
-              <ul>
-                <li>
-                  <div class="avatar">
-                    <img src="../images/@avatar.png" alt="" />
-                  </div>
-                  <div class="comment__info">
-                    <div class="comment__name">Chwwwl8007</div>
-                    <div class="comment__date">2020.12.23. 14:34</div>
-                    <div class="comment__btn">
-                      <button>댓글쓰기</button>
-                      <button>글삭제</button>
-                    </div>
-                    <div class="comment__content">
-                      경험하지 못한 세계의 명확한 그림이 그려졌습니다.<br />
-                      특히 방향성을 찾아야 한다는 말씀은 정말 많이 와닿았습니다.
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <div class="avatar">
-                <img src="../images/@avatar.png" alt="" />
-              </div>
-              <div class="comment__info">
-                <div class="comment__name">Chwwwl8007</div>
-                <div class="comment__date">2020.12.23. 14:34</div>
-                <div class="comment__btn">
-                  <button>댓글쓰기</button>
-                  <button>글삭제</button>
-                </div>
-                <div class="comment__content">
-                  경험하지 못한 세계의 명확한 그림이 그려졌습니다.<br />
-                  특히 방향성을 찾아야 한다는 말씀은 정말 많이 와닿았습니다.
-                </div>
-              </div>
-            </li>
+            </li> -->
           </ul>
           <div class="comment__write">
             <textarea placeholder="댓글을 입력하세요."></textarea>
-            <button class="btn-emoji" aria-label="이모티콘"></button>
-            <button class="btn-write" aria-label="댓글작성"></button>
+            <button type="button" class="btn-emoji" aria-label="이모티콘"></button>
+            <button type="submit" class="btn-write" aria-label="댓글작성"></button>
           </div>
-        </div>
+        </form>
 
         <!-- 본문 끝 -->
       </div>

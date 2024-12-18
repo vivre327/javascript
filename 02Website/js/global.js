@@ -13,6 +13,9 @@ import { postSearch } from "./ui/postSearch.js";
 import { headerAnimation } from "./headerAnimation.js";
 import { visualData } from "./data/visualData.js";
 import { visualSlider } from "./ui/visualSlider.js";
+import { loading } from "./loading.js";
+import { tab } from "./ui/tab.js";
+import { comment } from "./comment.js";
 
 // include
 // 그려진 뒤에 조작해야하므로 가장 상단에 위치
@@ -31,4 +34,11 @@ includeHTML("/02Website/include/footer.html", ".footer").then(() => {
   // headerAnimation
   headerAnimation();
   visualSlider(visualData);
+  loading(); //promise로 인해 비주얼바인딩 후 loading실행되도록??->공부하기
 });
+
+// tab("id", "--active");
+tab("id", {
+  activeClass: "--active",
+});
+comment();
